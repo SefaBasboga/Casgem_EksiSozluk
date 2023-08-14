@@ -1,0 +1,223 @@
+﻿@model AppUser
+<div id="content" class="instapaper_body" role="main">
+    <section id="content-body">
+
+
+        <div class="profile-top-container">
+
+
+
+            <div id="profile-logo">
+                <img src="//ekstat.com/img/default-profile-picture-light.svg" alt="aysebayrak" class="logo avatar" data-default="//ekstat.com/img/default-profile-picture-light.svg" style="border-radius:50%;border:0;">
+            </div>
+
+            <div id="nick-container">
+                <div>
+                    <h1 id="user-profile-title" data-nick="aysebayrak">
+                        <a href="">@Model.Name</a>
+                    </h1>
+                </div>
+            </div>
+
+
+            <ul id="user-text-badges">
+
+                <li><a href="/?q=%c3%a7aylak" title="">çaylak</a></li>
+            </ul>
+
+            <div id="badge-info-popup">
+                <a id="badge-link"></a>
+                <span id="badge-description"></span>
+            </div>
+            <ul id="user-image-badges">
+            </ul>
+
+        </div>
+
+        <div>
+
+
+
+
+            <ul id="user-entry-stats">
+                <li><span id="entry-count-total">0</span><span> entry</span></li>
+                <li><span id="user-follower-count">1</span><span> takipçi</span></li>
+                <li><span id="user-following-count">1</span><span> takip</span></li>
+            </ul>
+
+
+
+
+
+            <div class="clearfix">
+                <div class="sub-title-menu profile-buttons">
+                    <div id="remove-relation-dialog" style="display:none">
+                        <p>aysebayrak nick'li kullanıcıyı takibi bırakmak istediğinize emin misiniz ?</p>
+                        <br>
+                        <button id="confirm-remove-relation">evet</button>
+                        <button id="cancel">vazgeç</button>
+                    </div>
+                    <div class="profile-relation-button">
+                        <a id="anonymous-buddy-link">takip et</a>
+                    </div>
+                    <a id="btnmsg-anon">
+                        <svg class="eksico" id="svg-profile-message">
+                            <use xlink:href="#eksico-profile-message"></use>
+                        </svg>
+                    </a>
+
+                    <div class="dropdown profile-share-buttons">
+                        <a class="dropdown-toggle toggles">
+                            <svg class="eksico profile-share" id="svg-profile-share">
+                                <use xlink:href="#eksico-profile-share"></use>
+                            </svg>
+                        </a>
+
+                        <ul class="dropdown-menu toggles-menu">
+                            <li>
+                                <a id="share-profile-to-facebook" title="facebook" class="svgico svgico-facebook">
+                                    <svg class="eksico" id="svg-icon-facebook">
+                                        <use xlink:href="#eksico-icon-facebook"></use>
+                                    </svg>&nbsp; facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a id="share-profile-to-twitter" title="twitter" class="svgico svgico-twitter">
+                                    <svg class="eksico" id="svg-icon-twitter">
+                                        <use xlink:href="#eksico-icon-twitter"></use>
+                                    </svg>&nbsp; twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a id="copy-to-clipboard" class="svgico">
+                                    <svg class="eksico" id="svg-copy-link">
+                                        <use xlink:href="#eksico-copy-link"></use>
+                                    </svg>&nbsp; profil bağlantısını kopyala
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="profile-dots" class="dropdown" style="display: none;">
+                        <a class="dropdown-toggle toggles">
+                            <svg class="eksico" id="svg-dots">
+                                <use xlink:href="#eksico-profile-more"></use>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu toggles-menu">
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="profile-stats-sections" id="profile-stats-sections" style="display:">
+            <ul class="tabs2" id="profile-stats-section-nav">
+                <li class="active">
+                    <a rel="nofollow" href="/son-entryleri?nick=aysebayrak" data-pagenumber="1" class="tab-trigger">entry'ler</a>
+                </li>
+                <li>
+                    <a rel="nofollow" href="/favori-entryleri?nick=aysebayrak" data-pagenumber="1" class="tab-trigger">favoriler</a>
+                </li>
+                <li>
+                    <a rel="nofollow" href="/gorselleri?nick=aysebayrak" class="tab-trigger">görseller</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle toggles" title="diğer istatistikler">
+                        <span>istatistikler</span>
+                        <svg class="eksico" id="svg-caret-down-two">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#eksico-caret-down-two"></use>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu toggles-menu" id="other-stats-menu" style="">
+                        <li>
+                            <a rel="nofollow" href="/en-cok-favorilenen-entryleri?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">en çok favorilenenler</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/son-oylananlari?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">son oylananları</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/bu-hafta-dikkat-cekenleri?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">bu hafta dikkat çekenleri</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/el-emegi-goz-nuru?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">el emeği göz nuru</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/en-begenilenleri?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">en beğenilenleri</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/favori-yazarlari?nick=aysebayrak" class="tab-trigger">favori yazarları</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/katkida-bulundugu-kanallar?nick=aysebayrak" class="tab-trigger">katkıda bulunduğu kanallar</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="/ukteleri?nick=aysebayrak" class="tab-trigger">ukteleri</a>
+                        </li>
+                        <li>
+                            <a href="/sorunsallar%C4%B1?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">sorunsalları</a>
+                        </li>
+                        <li>
+                            <a href="/sorunsal-yan%C4%B1tlar%C4%B1?nick=aysebayrak" class="tab-trigger" data-pagenumber="1">sorunsal yanıtları</a>
+                        </li>
+                    </ul>
+                    <div>
+                    </div>
+                </li>
+            </ul>
+            <div class="tabs-content" id="profile-stats-section-content">
+                <p>yok ki öyle bişey</p>
+                <input type="hidden" id="no-more-data">
+            </div>
+            <a href="#" class="load-more-entries hidden" data-pagenumber="1">yükleniyor...</a>
+        </div>
+        <ul id="profile-cards">
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+        <span id="favorite-link-template" class="favorite-links" style="display:none">
+            <a class="favorite-link"><svg class="eksico"><use xlink:href="#eksico-drop"></use></svg></a>
+            <a class="favorite-count"></a>
+            <div class="favorite-list-popup"><div></div></div>
+        </span>
+
+
+
+
+
+
+    </section>
+    <aside id="aside" style="margin-top: 10px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="sticky-anchor"></div>
+        <div id="sticky-ad">
+        </div>
+        <div id="sticky-criteo">
+        </div>
+    </aside>
+</div>

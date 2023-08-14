@@ -1,0 +1,53 @@
+﻿@model List<EksiSozluk.EntityLayer.Concrete.Content>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Yorumlar Listesi</h2>
+        
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                       
+                        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Entry</th>
+                                    <th>Entry Tarihi</th>
+                                    <th>Entry Durumu</th>
+                                    <th>Sil</th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@item.ContentID</td>
+                                        <td>@item.ContentTitle</td>
+                                        <td>@item.ContentDate</td>
+                                        <td>@item.ContentStatus</td>
+                                        <td><a href="/Comment/DeleteComment/@item.ContentID" class="btn btn-outline-danger">Sil</a></td>
+                                    </tr>
+
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

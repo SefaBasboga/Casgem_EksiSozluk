@@ -1,0 +1,26 @@
+﻿@model List<Heading> 
+<div class="column-25" style="margin-top: 100px;">
+    <div class="card kenar " style="overflow-y: scroll; border: none;width: 245px; height: 590px; font-size: 14px;margin-left: 50px;position: fixed;">
+        <h2 style="font-size: 20px;margin-bottom: 8px;color: #888;line-height: 1.2;">gündem <a href=""><i class="fa-solid fa-gear" style="color: #888;font-size: 10px;"></i></a></h2>
+        @foreach (var item in Model)
+        {
+            <div class="d-flex justify-content-between me-2 kutu" style="padding: 10px 0 0 0;">
+                <a href="/Content/ContentByHeading/@item.HeadingID" class="nav-link"  style="display: inline; color: #333333; font-size: 14px;text-decoration: none;" >@item.HeadingName</a>
+               @* <a class="nav-link" href="/Content/ContentByHeading/@item.HeadingID">@item.HeadingName</a>*@
+                
+                @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))
+                <small style="display: inline;color: #888;" class="me-2 ">1.7b</small>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+<a href="/Content/ContentByHeading" class="nav-link">rgtr</a>
+
+
+
+
+

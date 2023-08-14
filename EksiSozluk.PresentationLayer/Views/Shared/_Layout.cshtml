@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<!--BU KISIM KALACAK-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekşi Sözlük</title>
+    <!-- Logo -->
+    <link rel="icon" href="~/Eksi-Sozluk-2/img/eksisözlükpng.png">
+    <link rel="stylesheet" href="~/Eksi-Sozluk-2/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Eksi-Sozluk-2/style.css">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/85a8244a07.js" crossorigin="anonymous"></script>
+</head>
+
+
+<!--BU KISIM KALACAK-->
+
+
+
+<body>
+
+    @await Component.InvokeAsync("_NavbarPartial")
+
+
+    <hr class="container-fluid m-0">
+
+
+
+    <div class="mycontainer" style="position: relative;">
+        <div class="content" id="headers">
+
+             @await Component.InvokeAsync("_SidebarPartial")
+          
+            <div class="column-75" style="position: relative;">
+               
+
+                    @RenderBody()
+               
+
+               
+             </div>
+          
+
+        </div>
+      
+
+
+    </div>
+ 
+   
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/site.js"></script>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+
+    <link rel="stylesheet" href="~/Eksi-Sozluk-2/bootstrap.bundle.min.js">
+    @RenderSection("Scripts", required:false)
+
+  
+
+</body>
+
+<div class="mycontainer" style="position: relative;">
+    <div class="content" id="headers">
+
+
+        <div class="column-75" style="position: relative;">
+
+
+
+            @await Component.InvokeAsync("_FooterPartial")
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</html>
+
+

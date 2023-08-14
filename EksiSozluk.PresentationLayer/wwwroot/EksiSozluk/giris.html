@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/91bd71ff2c.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="">
+      <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container-fluid header-top">
+          <a class="navbar-brand me-5 ms-3" href="index.html">
+            <img
+              class="logo"
+              src="https://eksisozluk.com/content/img/new-design/eksisozluk_logo.svg"
+              alt=""
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex form_action" role="search">
+              <div class="input-group">
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="baslık,#entry,@yazar"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                />
+                <a id="a3-toggle" href="#" accesskey="a">&nbsp;</a>
+                <button type="button" class="btn btn-outline-primary">
+                  <i class="fas fa-search arama"></i>
+                </button>
+              </div>
+            </form>
+            <form
+              action="/basliklar/ara"
+              class="vertical"
+              id="advanced-search-form"
+              method="get"
+              role="search"
+              novalidate="novalidate"
+            >
+              <div>
+                <label class="mb-2" for="SearchForm_Keywords">kelimeler</label
+                ><br />
+                <input
+                  class="w-75"
+                  id="SearchForm_Keywords"
+                  name="SearchForm.Keywords"
+                  type="text"
+                  value=""
+                  autocapitalize="off"
+                  autocorrect="off"
+                />
+              </div>
+              <div>
+                <label class="mb-2" for="SearchForm_Author">yazar</label><br />
+                <input
+                  autocomplete="off"
+                  class="nickpicker ui-autocomplete-input mb-2 w-75"
+                  id="SearchForm_Author"
+                  maxlength="40"
+                  name="SearchForm.Author"
+                  placeholder=""
+                  type="text"
+                  value=""
+                  autocapitalize="off"
+                  autocorrect="off"
+                />
+              </div>
+              <div class="w-75">
+                <label class="mb-2" for="SearchForm_When_From">ne zaman</label
+                ><br />
+                <span class="daterange w-100">
+                  <input
+                    data-val="true"
+                    data-val-date="The field From must be a date."
+                    id="SearchForm_When_From"
+                    name="SearchForm.When.From"
+                    type="date"
+                    value=""
+                  />
+
+                  <input
+                    class="mb-2"
+                    data-val="true"
+                    data-val-date="The field To must be a date."
+                    id="SearchForm_When_To"
+                    name="SearchForm.When.To"
+                    type="date"
+                    value=""
+                  />
+
+                  <span
+                    class="field-validation-valid"
+                    data-valmsg-for="SearchForm.When.From"
+                    data-valmsg-replace="true"
+                  ></span>
+                  <span
+                    class="field-validation-valid"
+                    data-valmsg-for="SearchForm.When.To"
+                    data-valmsg-replace="true"
+                  ></span>
+                </span>
+              </div>
+              <div>
+                <div class="checkbox">
+                  <input
+                    data-val="true"
+                    data-val-required="The güzelinden olsun field is required."
+                    id="SearchForm_NiceOnly"
+                    name="SearchForm.NiceOnly"
+                    type="checkbox"
+                    value="true"
+                  /><input
+                    name="SearchForm.NiceOnly"
+                    type="hidden"
+                    value="false"
+                  />
+                  <label class="mb-2" for="SearchForm_NiceOnly"
+                    >güzelinden olsun</label
+                  ><br />
+                </div>
+                <span
+                  class="field-validation-valid"
+                  data-valmsg-for="SearchForm.NiceOnly"
+                  data-valmsg-replace="true"
+                ></span>
+              </div>
+              <div>
+                <label class="mb-2" for="SearchForm_SortOrder"
+                  >sıralama şekli</label
+                ><br />
+                <select
+                  data-val="true"
+                  data-val-required="The sıralama şekli field is required."
+                  id="SearchForm_SortOrder"
+                  name="SearchForm.SortOrder"
+                  aria-describedby="SearchForm_SortOrder-error"
+                  class="valid mb-2 w-75"
+                  aria-invalid="false"
+                >
+                  <option value="Topic">alfabetik</option>
+                  <option selected="selected" value="Date">
+                    yeniden eskiye
+                  </option>
+                  <option value="Count">dolu dolu</option>
+                </select>
+              </div>
+              <div class="actions">
+                <button type="submit" class="primary btn">mükemmel ara</button>
+                <a class="close">boşver</a>
+              </div>
+              <ul
+                id="ui-id-1"
+                tabindex="0"
+                class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
+                style="display: none"
+              ></ul>
+            </form>
+          </div>
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="giris.html">giriş</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kayit.html">kayıt ol</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <ul class="d-flex gundem">
+          <li><a href="/index.html">gündem</a></li>
+          <li><a href="/basliklar/debe.html">debe</a></li>
+          <li><a href="/basliklar/sorunsallar.html">sorunsallar</a></li>
+          <li><a href="/basliklar/spor.html">#spor</a></li>
+          <li><a href="/basliklar/iliskiler.html">#ilişkiler</a></li>
+          <li><a href="/basliklar/siyaset.html">#siyaset</a></li>
+          <a href="" data-bs-toggle="dropdown" aria-expanded="false">...</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">tarihte bugün</a></li>
+            <li><a class="dropdown-item" href="#">#seyahat</a></li>
+            <li><a class="dropdown-item" href="#">#müzik</a></li>
+            <li><a class="dropdown-item" href="#">#tv</a></li>
+            <li><a class="dropdown-item" href="#">#haber</a></li>
+            <li><a class="dropdown-item" href="#">#bilim</a></li>
+            <li><a class="dropdown-item" href="#">#edebiyat</a></li>
+            <li><a class="dropdown-item" href="#">#eğitim</a></li>
+            <li><a class="dropdown-item" href="#">#ekonomi</a></li>
+            <li><a class="dropdown-item" href="#">başıboşlar</a></li>
+            <li><a class="dropdown-item" href="#">tüm kanallar</a></li>
+            
+          </ul>
+          <li>
+            <a href="https://www.youtube.com/penavideo" target="_blank"
+              ><img
+                src="https://eksisozluk.com/content/img/new-logos/pena-text-logo@2x.png"
+                alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="https://seyler.eksisozluk.com" target="_blank"
+              ><img
+                src="https://eksisozluk.com/content/img/new-logos/eksiseyler-text-logo@2x.png"
+                alt=""
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="container middle_page d-flex w-100">
+      <div class="left-side">
+        <nav class="visible-link">
+          <div class="header-bas d-flex">
+            <h2 class="gundem-baslik">gündem</h2>
+            <a id="gundem-gear" href=""
+              ><i id="baslik" class="fa-solid fa-gear"></i
+            ></a>
+          </div>
+          <div id="gundem-visible">
+            <p>gündeminizi kişiselleştirin:</p>
+            <ul class="gundem-link">
+              <li><a href="">#spor</a></li>
+              <li><a href="">#siyaset</a></li>
+              <li><a href="">#anket</a></li>
+              <li><a href="">#ilişkiler</a></li>
+              <li><a href="">#ekşi sözlük</a></li>
+              <li><a href="">#yetişkin</a></li>
+              <li><a href="">#trol</a></li>
+            </ul>
+          </div>
+          <ul class="topic-list partial" data-timestamp="637999757796904465">
+            <li>
+              <a
+                href="/erkek-kardesimin-askerde-kotu-yola-dusmesi--7422246?a=popular"
+                draggable="true"
+                >erkek kardeşimin askerde kötü yola düşmesi <small>79</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/e-hadi-s-git-o-zaman-tayyip-erdogana-ver--7422162?a=popular"
+                draggable="true"
+                >e hadi s... git o zaman tayyip erdoğan'a ver
+                <small>227</small></a
+              >
+            </li>
+            <li id="sponsored-index-item-first">
+              <div
+                class="ad-double-click ad-1x1 ad-banner ad-doubleclickwebsponsoredindexitemfirst ads"
+                data-info='{"NetworkIdentifier":"/1024435/desktop_web_sponsored_title","Slot":"div-gpt-ad-1458673906471-0","NetworkCode":"1024435","Target":"desktop_web_sponsored_title","IsLazyLoad":false,"Size":[1,1],"Name":"DoubleClickWebSponsoredIndexItemFirst","DisplayTypes":4}'
+              >
+                <div
+                  id="div-gpt-ad-1458673906471-0"
+                  style="display: none"
+                  data-google-query-id="CKXx2dG-t_oCFRfGuwgdZsoEpA"
+                >
+                  <div
+                    id="google_ads_iframe_/1024435/desktop_web_sponsored_title_0__container__"
+                    style="border: 0pt none"
+                  ></div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="/almanca-denilince-akla-ilk-gelen-kelime--5618007?a=popular"
+                draggable="true"
+                >almanca denilince akla ilk gelen kelime <small>242</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/asgari-ucrete-80-zam-yapilacak-iddiasi--7422088?a=popular"
+                draggable="true"
+                >asgari ücrete %80 zam yapılacak iddiası <small>175</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/doktora-dokunmak-konusmak-falan-bu-ne-manyakliktir--7421387?a=popular"
+                draggable="true"
+                >doktora dokunmak konuşmak falan bu ne manyaklıktır
+                <small>1,2b</small></a
+              >
+            </li>
+            <li id="nativespot-unit-10924">
+              <script>
+                NativeAdPub.push({
+                  target: "10924",
+                  id: "nativespot-unit-10924",
+                });
+              </script>
+            </li>
+            <li id="sponsored-index-item-third">
+              <div
+                class="ad-double-click ad-1x1 ad-banner ad-doubleclickwebsponsoredindexitemthird ads"
+                data-info='{"NetworkIdentifier":"/1024435/desktop_web_sponsored_title_3","Slot":"div-gpt-ad-1458674294703-0","NetworkCode":"1024435","Target":"desktop_web_sponsored_title_3","IsLazyLoad":false,"Size":[1,1],"Name":"DoubleClickWebSponsoredIndexItemThird","DisplayTypes":4}'
+              >
+                <div
+                  id="div-gpt-ad-1458674294703-0"
+                  style="display: none"
+                  data-google-query-id="COjw2dG-t_oCFV_GuwgdIV0HSA"
+                >
+                  <div
+                    id="google_ads_iframe_/1024435/desktop_web_sponsored_title_3_0__container__"
+                    style="border: 0pt none"
+                  ></div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="/polislere-27-bin-tl-promosyon-odenmesi--7422347?a=popular"
+                draggable="true"
+                >polislere 27 bin tl promosyon ödenmesi <small>22</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/28-eylul-2022-erdoganin-aciklamalari--7422346?a=popular"
+                draggable="true"
+                >28 eylül 2022 erdoğan'ın açıklamaları <small>17</small></a
+              >
+            </li>
+            <li id="sponsored-index-item-second">
+              <div
+                class="ad-double-click ad-1x1 ad-banner ad-doubleclickwebsponsoredindexitemsecond ads"
+                data-info='{"NetworkIdentifier":"/1024435/desktop_web_sponsored_title_2","Slot":"div-gpt-ad-1458674186341-0","NetworkCode":"1024435","Target":"desktop_web_sponsored_title_2","IsLazyLoad":false,"Size":[1,1],"Name":"DoubleClickWebSponsoredIndexItemSecond","DisplayTypes":4}'
+              >
+                <div
+                  id="div-gpt-ad-1458674186341-0"
+                  style="display: none"
+                  data-google-query-id="COqB2tG-t_oCFR_BuwgdZpQDkg"
+                >
+                  <div
+                    id="google_ads_iframe_/1024435/desktop_web_sponsored_title_2_0__container__"
+                    style="border: 0pt none"
+                  ></div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="/istanbulda-yurumeye-doyulmayan-guzergah--6534032?a=popular"
+                draggable="true"
+                >istanbul'da yürümeye doyulmayan güzergah <small>133</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/ateistlerdeki-dinlerin-ortadan-kalkacagi-inanci--3956356?a=popular"
+                draggable="true"
+                >ateistlerdeki dinlerin ortadan kalkacağı inancı
+                <small>42</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/28-eylul-2022-sabah-akit-yeni-safak-mansetleri--7422060?a=popular"
+                draggable="true"
+                >28 eylül 2022 sabah akit yeni şafak manşetleri
+                <small>132</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/kanser-olan-esi-bosamanin-hukuki-durumu--7422300?a=popular"
+                draggable="true"
+                >kanser olan eşi boşamanın hukuki durumu <small>15</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/dayak-yiyip-yerde-yatan-genci-taksinin-ezmesi--7422290?a=popular"
+                draggable="true"
+                >dayak yiyip yerde yatan genci taksinin ezmesi
+                <small>21</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/melodisinde-islik-olan-sarkilar--3978910?a=popular"
+                draggable="true"
+                >melodisinde ıslık olan şarkılar <small>11</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/ankara-sbfde-ulkuculerle-solcularin-karsilasmasi--7421788?a=popular"
+                draggable="true"
+                >ankara sbf'de ülkücülerle solcuların karşılaşması
+                <small>99</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/kuzen-ile-evlenmeye-karar-vermek--7090083?a=popular"
+                draggable="true"
+                >kuzen ile evlenmeye karar vermek <small>123</small></a
+              >
+            </li>
+            <li id="sponsored-index-item-fourth">
+              <div
+                class="ad-double-click ad-1x1 ad-banner ad-doubleclickwebsponsoredindexitemfourth ads"
+                data-info='{"NetworkIdentifier":"/1024435/desktop_web_sponsored_title_4","Slot":"div-gpt-ad-1458674186344-0","NetworkCode":"1024435","Target":"desktop_web_sponsored_title_4","IsLazyLoad":false,"Size":[1,1],"Name":"DoubleClickWebSponsoredIndexItemFourth","DisplayTypes":4}'
+              >
+                <div
+                  id="div-gpt-ad-1458674186344-0"
+                  style="display: none"
+                  data-google-query-id="CPKo2tG-t_oCFfqe_QcdQtgMkg"
+                >
+                  <div
+                    id="google_ads_iframe_/1024435/desktop_web_sponsored_title_4_0__container__"
+                    style="border: 0pt none"
+                  ></div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="/goz-kanatan-yazim-yanlislari--6330708?a=popular"
+                draggable="true"
+                >göz kanatan yazım yanlışları <small>25</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/2-dereceden-kuzen-ile-evlenmeye-karar-vermek--7422261?a=popular"
+                draggable="true"
+                >2. dereceden kuzen ile evlenmeye karar vermek
+                <small>28</small></a
+              >
+            </li>
+            <li id="sponsored-index-item-fifth">
+              <div
+                class="ad-double-click ad-1x1 ad-banner ad-doubleclickwebsponsoredindexitemfifth ads"
+                data-info='{"NetworkIdentifier":"/1024435/desktop_web_sponsored_title_5","Slot":"div-gpt-ad-1458674294704-0","NetworkCode":"1024435","Target":"desktop_web_sponsored_title_5","IsLazyLoad":false,"Size":[1,1],"Name":"DoubleClickWebSponsoredIndexItemFifth","DisplayTypes":4}'
+              >
+                <div
+                  id="div-gpt-ad-1458674294704-0"
+                  style="display: none"
+                  data-google-query-id="CJj-2dG-t_oCFaSZ_Qcd0v0Bbg"
+                >
+                  <div
+                    id="google_ads_iframe_/1024435/desktop_web_sponsored_title_5_0__container__"
+                    style="border: 0pt none"
+                  ></div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="/kanli-canli-iki-neandertal-ile-yapilan-roportaj--7421932?a=popular"
+                draggable="true"
+                >kanlı canlı iki neandertal ile yapılan röportaj
+                <small>173</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/27-eylul-2022-meral-aksenerin-aciklamalari--7421635?a=popular"
+                draggable="true"
+                >27 eylül 2022 meral akşener'in açıklamaları
+                <small>711</small></a
+              >
+            </li>
+            <li>
+              <a href="/didem-didar-balci--7421451?a=popular" draggable="true"
+                >didem didar balcı <small>461</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/tum-maaslarda-ciddi-artis-yapilacak--7422000?a=popular"
+                draggable="true"
+                >tüm maaşlarda ciddi artış yapılacak <small>246</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/askerde-albaya-yumruk-atmak--7421630?a=popular"
+                draggable="true"
+                >askerde albaya yumruk atmak <small>289</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/gandalfin-dustugu-golun-beton-etkisi-yapmamasi--7421906?a=popular"
+                draggable="true"
+                >gandalf'ın düştüğü gölün beton etkisi yapmaması
+                <small>76</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/spagettiyi-ikiye-kirarak-pisirmek--1286771?a=popular"
+                draggable="true"
+                >spagettiyi ikiye kırarak pişirmek <small>211</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/erkeklerin-evlenmek-istememe-nedenleri--1077656?a=popular"
+                draggable="true"
+                >erkeklerin evlenmek istememe nedenleri <small>38</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/dunyanin-en-kotu-tatlisi--7041869?a=popular"
+                draggable="true"
+                >dünyanın en kötü tatlısı <small>399</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/mersinde-sehit-olan-polisin-catisma-goruntuleri--7421789?a=popular"
+                draggable="true"
+                >mersin'de şehit olan polisin çatışma görüntüleri
+                <small>184</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/mansur-yavasi-hdpnin-istemedigini-unutan-muhalif--7421978?a=popular"
+                draggable="true"
+                >mansur yavaş'ı hdp'nin istemediğini unutan muhalif
+                <small>188</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/mersinde-pkk-destekcisi-chplilerin-yakalanmasi--7422115?a=popular"
+                draggable="true"
+                >mersin'de pkk destekçisi chp'lilerin yakalanması
+                <small>47</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/30luk-abilerden-genclere-tavsiyeler--5894620?a=popular"
+                draggable="true"
+                >30'luk abilerden gençlere tavsiyeler <small>117</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/2022-istanbuldaki-nufus-patlamasi--7422041?a=popular"
+                draggable="true"
+                >2022 istanbul'daki nüfus patlaması <small>80</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/iyi-parti-zafer-partisi-memleket-partisi-ittifaki--7399731?a=popular"
+                draggable="true"
+                >iyi parti-zafer partisi-memleket partisi ittifakı
+                <small>24</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/28-eylul-2022-dolar-kuru--7421755?a=popular"
+                draggable="true"
+                >28 eylül 2022 dolar kuru <small>20</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/geceye-iliskilerden-ogrenilen-bir-ders-birak--6245117?a=popular"
+                draggable="true"
+                >geceye ilişkilerden öğrenilen bir ders bırak
+                <small>322</small></a
+              >
+            </li>
+            <li>
+              <a href="/ahmet-davutoglu--280327?a=popular" draggable="true"
+                >ahmet davutoğlu <small>33</small></a
+              >
+            </li>
+            <li>
+              <a href="/jorge-jesus--2508719?a=popular" draggable="true"
+                >jorge jesus <small>18</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/2-ekim-2022-besiktas-fenerbahce-maci--7370002?a=popular"
+                draggable="true"
+                >2 ekim 2022 beşiktaş fenerbahçe maçı <small>132</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/lise-stajinin-sigorta-baslangici-sayilmasi--7422070?a=popular"
+                draggable="true"
+                >lise stajının sigorta başlangıcı sayılması <small>51</small></a
+              >
+            </li>
+            <li>
+              <a href="/house-of-the-dragon--6230438?a=popular" draggable="true"
+                >house of the dragon <small>78</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/bulent-turanin-ozgur-ozele-taktigi-kapak--7422264?a=popular"
+                draggable="true"
+                >bülent turan'ın özgür özel'e taktığı kapak <small>14</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/cakralardan-ve-enerjiden-bahseden-ablanin-videosu--7421298?a=popular"
+                draggable="true"
+                >çakralardan ve enerjiden bahseden ablanın videosu
+                <small>209</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/eglence-anlayisi-cimenlerde-bira-icmek-olan-insan--4874120?a=popular"
+                draggable="true"
+                >eğlence anlayışı çimenlerde bira içmek olan insan
+                <small>12</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/bir-doktorun-egosundan-daha-buyuk-olan-sey--4831966?a=popular"
+                draggable="true"
+                >bir doktorun egosundan daha büyük olan şey <small>98</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/ibbden-75-bin-ogrenciye-4500-tl-burs--7420973?a=popular"
+                draggable="true"
+                >ibb'den 75 bin öğrenciye 4500 tl burs <small>18</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/ekrem-imamoglunu-3-kelimeyle-ozetlemek--6025316?a=popular"
+                draggable="true"
+                >ekrem imamoğlu'nu 3 kelimeyle özetlemek <small>256</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/1-yil-boyunca-ataturkun-bornozunun-yenilenmesi--7422171?a=popular"
+                draggable="true"
+                >1 yıl boyunca atatürk'ün bornozunun yenilenmesi
+                <small>22</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/il-saglik-muduru-biyigi--7422215?a=popular"
+                draggable="true"
+                >il sağlık müdürü bıyığı <small>23</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/28-eylul-2022-besiktas-fenerbahce-passolig-faciasi--7422081?a=popular"
+                draggable="true"
+                >28 eylül 2022 beşiktaş fenerbahçe passolig faciası
+                <small>12</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/2023-asgari-ucret-tahmin-yarismasi--7111764?a=popular"
+                draggable="true"
+                >2023 asgari ücret tahmin yarışması <small>38</small></a
+              >
+            </li>
+            <li>
+              <a
+                href="/arabasina-yakit-koymaya-calisan-abla--7422209?a=popular"
+                draggable="true"
+                >arabasına yakıt koymaya çalışan abla <small>25</small></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Left-side End -->
+      <!-- Right-side Start -->
+      <div class="Right-side">
+        <div class="form-container" id="login-form-container">
+          <h1>giriş</h1>
+
+          <form action="/giris" method="post" novalidate="novalidate">
+            <input
+              name="__RequestVerificationToken"
+              type="hidden"
+              value="AHibX_CDQt6vf9xhnwLq6t7lzhpnk_Fqh5oLJ6WI9GOM2LCMMWqgWEsZlYwaNdG6OoNw4Ipv4LPwfGROqb5zCGfls14fFfFrUIV35eu5hyg1"
+            />
+            <fieldset class="verticall">
+              <input
+                id="ReturnUrl"
+                name="ReturnUrl"
+                type="hidden"
+                value="https://eksisozluk.com/kayit"
+              />
+              <span
+                class="field-validation-valid"
+                data-valmsg-for="Status"
+                data-valmsg-replace="true"
+              ></span>
+              <div>
+                <label for="UserName">e-mail adresi</label><br />
+                <input
+                  autofocus="autofocus"
+                  data-val="true"
+                  data-val-length="The field e-mail adresi must be a string with a maximum length of 50."
+                  data-val-length-max="50"
+                  data-val-required="kullanıcı adı boş olamaz"
+                  id="username"
+                  maxlength="130"
+                  name="UserName"
+                  type="text"
+                  value=""
+                  autocapitalize="off"
+                  autocorrect="off"
+                />
+                <span
+                  class="field-validation-valid"
+                  data-valmsg-for="UserName"
+                  data-valmsg-replace="true"
+                ></span>
+              </div>
+              <div>
+                <label for="Password">şifre</label><br />
+                <input
+                  data-val="true"
+                  data-val-length="The field şifre must be a string with a maximum length of 50."
+                  data-val-length-max="50"
+                  data-val-required="şifre boş olamaz"
+                  id="password"
+                  maxlength="50"
+                  name="Password"
+                  type="password"
+                />
+                <span
+                  class="field-validation-valid"
+                  data-valmsg-for="Password"
+                  data-valmsg-replace="true"
+                ></span>
+              </div>
+              <div>
+                <label class="checkbox">
+                  <input
+                    data-val="true"
+                    data-val-required="The unutma bunları sorucam sonra field is required."
+                    id="RememberMe"
+                    name="RememberMe"
+                    type="checkbox"
+                    value="true"
+                  /><input name="RememberMe" type="hidden" value="false" />
+                  unutma bunları sorucam sonra
+                </label>
+              </div>
+              <div class="actions">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                  giriş yapmaya çabala
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          <h1>giremeyiş</h1>
+          <ul>
+            <li><a href="/sifre-sifirla">şifremi unuttum</a></li>
+            <li><a href="/kayit">kayıtlı kullanıcı olunası</a></li>
+          </ul>
+        </div>
+
+        <footer id="site-footer">
+          <ul class="d-flex">
+            <li><a href="/iletisim">iletişim</a></li>
+            <li><a href="/entry/125231929">şeffaflık raporu</a></li>
+            <li><a href="/reklam">reklam</a></li>
+            <li><a href="/sozluk-is-ilanlari--5895566">kariyer</a></li>
+            <li><a href="/entry/19784395">kullanım koşulları</a></li>
+            <li><a href="/entry/66470645">gizlilik politikamız</a></li>
+            <li><a href="/entry/66762977" rel="help">sss</a></li>
+            <li><a class="index-link" href="/istatistik">istatistikler</a></li>
+            <li><a href="/sub-etha">sub-etha</a></li>
+            <li>
+              <a
+                href="https://www.instagram.com/sozluk"
+                rel="noopener"
+                target="_blank"
+                >instagram</a
+              >
+            </li>
+            <li>
+              <a href="http://twitter.com/sozluk" rel="noopener" target="_blank"
+                >twitter</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://www.facebook.com/eksisozluk"
+                rel="noopener"
+                target="_blank"
+                >facebook</a
+              >
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.getElementById("a3-toggle").onclick = function () {
+        myFunction();
+      };
+
+      function myFunction() {
+        document
+          .getElementById("advanced-search-form")
+          .classList.toggle("show");
+      }
+    </script>
+    <!-- <script>
+      document.getElementById("gundem-gear").onclick = function() {myFunction()};
+      
+  
+      function myFunction() {
+      document.getElementById("gundem-visible").classList.toggle("click");
+  }
+  
+      </script> -->
+  </body>
+</html>

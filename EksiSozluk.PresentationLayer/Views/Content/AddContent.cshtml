@@ -1,0 +1,42 @@
+﻿
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+<div class="column-75 yazi" style="position: relative;">
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">İçerik Ekleme</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+
+  </textarea>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="ml-auto">
+            <a class="btn custom-color" background-color: #4CAF50; id="yollaButton" role="button">yolla</a>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+   $("#yollaButton").click(function () {
+        let contentvalues = {
+            Name: $("#exampleFormControlTextarea1").val(),
+        };
+        $.ajax({
+            type: "post",
+            url: "/Content/AddContent/",
+            data: contentvalues,
+            success: function (funk2) {
+                let result = jQuery.parseJSON(funk2);
+                //alert("Müşteri Başarılı Bir Şekilde Eklendi!");
+                swal("Yorum Eklendi!", "Teşekkürler!", "success");
+            }
+        });
+    });
+</script>

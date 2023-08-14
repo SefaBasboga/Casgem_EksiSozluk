@@ -1,0 +1,108 @@
+﻿@model List<Content>
+@{
+    ViewData["Title"] = "ContentByHeading";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br>
+<br />
+<br />
+
+<div class="column-75 yazi" style="position: relative;">
+
+
+    @foreach (var item in Model)
+    {
+        <div style="margin-right: 25px;">
+
+            <h4  style="margin: 15px 0;font-size: 22px;color: #333333;"> <a href="#"><b>@item.Heading.HeadingName</b></a>  </h4>
+
+            <p>@item.ContentTitle</p>
+
+            <footer>
+                <div>
+                    <i class="fa-solid fa-circle-arrow-up"></i>
+                    <i class="fa-solid fa-circle-arrow-down" style="padding: 0 0 0 15px;"></i>
+                    <i class="fa-solid fa-ellipsis" style="float: right;padding: 0 10px 0 15px;"></i>
+                    <i class="fa-solid fa-arrow-up-from-bracket" style="float: right; "></i>
+                </div>
+                <div style=" display:flex ; float: right; font-size: 14px;" class="p-2">
+                    <div class="me-2 ">
+                        <a href="/User/Index" style="display: block; text-align: right; text-decoration: none; color: #81C14B;" href=""> @item.AppUser.UserName </a>
+                        <a style="display: block;text-decoration: none; color: #888888;" href="">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</a>
+                    </div>
+                    <img src="~/Eksi-Sozluk-2/img/user.svg" alt="">
+                    <img src="@item.AppUser.WriterImage" alt="">
+
+                </div>
+            </footer>
+        </div>
+    }
+</div>
+
+<br />
+<br />
+
+<style>
+    .custom-color {
+        background-color: #81C14B;
+        color: #ffffff;
+    }
+</style>
+
+
+@await Html.PartialAsync("~/Views/Content/AddContent.cshtml", new { id = ViewBag.destID })
+
+
+ @* <div class="column-75 yazi" style="position: relative;">
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">İçerik Ekleme</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+
+  </textarea>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="ml-auto">
+            <a class="btn custom-color" background-color: #4CAF50; id="yollaButton" role="button">yolla</a>
+        </div>
+    </div>
+
+</div>
+ *@
+
+
+<!-- Mevcut kodunuzun sonundan sonra ekleyin -->
+<script>
+    const yollaButton = document.getElementById("yollaButton");
+    const textarea = document.getElementById("exampleFormControlTextarea1");
+    const yaziDiv = document.querySelector(".yazi");
+
+    yollaButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        
+        const icerik = textarea.value;
+
+        // Oluşturulan içeriği eklemek için yeni bir div oluşturun
+        const yeniIcerikDiv = document.createElement("div");
+        yeniIcerikDiv.className = "mb-3";
+        yeniIcerikDiv.innerHTML = `
+            
+                <h4 style="margin: 15px 0;font-size: 22px;color: #333333;"> <a href="#"><b>Galatasaray</b></a>  </h4>
+
+                    <p>${icerik}</p>
+        `;
+
+        // Oluşturulan içeriği yaziDiv içine ekleyin
+        yaziDiv.appendChild(yeniIcerikDiv); // Burada appendChild kullanarak sona ekliyoruz
+
+        // Textarea'yı temizleyin
+        textarea.value = "";
+
+    });
+
+
+</script>
+
+
